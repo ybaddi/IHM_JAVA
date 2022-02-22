@@ -7,12 +7,12 @@ import java.sql.SQLException;
 public class MyConnection {
 
 	// url
-	private static String url = "jdbc:mysql://localhost:3306/";
+	private static String url = "jdbc:mysql://192.168.57.4:3306/";
 
 	// user
 	private static String user = "root";
 	// password
-	private static String password = "password";
+	private static String password = "baddiroot";
 
 	// database name
 	private static String database_name ="estsb";

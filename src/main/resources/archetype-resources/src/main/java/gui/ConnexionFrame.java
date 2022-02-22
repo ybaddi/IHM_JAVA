@@ -25,7 +25,7 @@ public class ConnexionFrame extends JFrame implements ActionListener{
 		lblNomUser.setBounds(51, 74, 117, 14);
 		getContentPane().add(lblNomUser);
 		
-		// label nom
+		// label password
 		JLabel lblPassword = new JLabel("Your Password");
 		lblPassword.setBounds(51, 120, 103, 14);
 		getContentPane().add(lblPassword);
@@ -72,6 +72,8 @@ public class ConnexionFrame extends JFrame implements ActionListener{
 	        }
 		}else{
 			System.out.println("inscription");
+			InscriptionFrame inscriptionFrame = new InscriptionFrame();
+			this.dispose();
 			
 		}
 		

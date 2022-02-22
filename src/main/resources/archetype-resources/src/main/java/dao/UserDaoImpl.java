@@ -16,7 +16,29 @@ public class UserDaoImpl implements Dao<User> {
 
 	public User save(User user) {
 		// TODO Auto-generated method stub
-		return null;
+		Connection c = MyConnection.getConnexion();
+		if(c!=null) {
+			try {
+			PreparedStatement st = 
+					c.prepareStatement("Insert into users "
+							+ "(nom,prenom,password,sexe,type) "
+							+ "values(?,?,?,?,?)",
+							PreparedStatement.RETURN_GENERATED_KEYS);
+			st.setString(1, user.getNom());
+			st.setString(2, user.getPrenom());
+			st.setString(3, user.getPassword());
+			st.setString(4, String.valueOf(user.getSexe()));
+			st.setString(5, String.valueOf(user.getType()));
+			st.executeUpdate();
+			ResultSet rs = st.getGeneratedKeys();
+			if(rs.next()) {
+				user.setId(rs.getInt(1)); 
+			}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return user;
 	}
 
 	public void remove(User user) {
