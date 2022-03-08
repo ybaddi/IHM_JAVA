@@ -25,10 +25,10 @@ public class App
         
         
         // main frame
-//        ConnexionFrame cnf = new ConnexionFrame();
+        ConnexionFrame cnf = new ConnexionFrame();
         
         // Calculette
-        Calculette calculette = new Calculette();
+//        Calculette calculette = new Calculette();
         
         
     }

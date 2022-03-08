@@ -3,6 +3,12 @@ package main.java.gui;
 import javax.swing.*;
 
 import main.java.dao.UserDaoImpl;
+import main.java.gui.AdminFrame;
+import main.java.gui.InscriptionFrame;
+import main.java.gui.UserFrame;
+import main.java.models.User;
+
+import main.java.dao.UserDaoImpl;
 import main.java.models.User;
 
 import java.awt.event.*;
@@ -13,7 +19,8 @@ public class ConnexionFrame extends JFrame implements ActionListener{
 	private JTextField nomText = new JTextField();
 	private JTextField passwordText = new JTextField();
 	private JButton btnInscription = new JButton("Inscription");
-	private JButton btnConnextion = new JButton("Connection");
+	public JButton btnConnextion = new JButton("Connection");
+	public int nbrConnexion;
 	
 	public ConnexionFrame() {
 		setSize(500,500);
@@ -56,27 +63,35 @@ public class ConnexionFrame extends JFrame implements ActionListener{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		if(e.getSource() == btnConnextion) {
-			System.out.println("conecction");
+	public void actionPerformed(ActionEvent ae) {
+		nbrConnexion=0;
+		if (ae.getSource() == this.btnConnextion) {
+			nbrConnexion++;
 			String nom = nomText.getText();
 			String password = passwordText.getText();
-			System.out.println(nom);
-			System.out.println(password);
-			UserDaoImpl userDaoImpl = new UserDaoImpl();
-	        User user = userDaoImpl.findByNomAndPassword(nom,password);
-	        System.out.println(user);
-	        if(user == null) {
-	        	JOptionPane.showMessageDialog(null, "No user with thios cridentiels");
-	        }
-		}else{
-			System.out.println("inscription");
+			UserDaoImpl utilisateurDaoImpl = new UserDaoImpl();
+			User utilisateur = utilisateurDaoImpl.findByNomAndPassword(nom, password);
+			System.out.println(nbrConnexion);
+			if (utilisateur == null) {
+				if (nbrConnexion == 3) {
+					this.dispose();
+				} else {
+					JOptionPane.showMessageDialog(null, "Identifiant(s) incorrect(s)");
+				}
+			} else {
+				if (utilisateur.getType() == 'a' ) {
+					System.out.println("vous êtes administrateur");
+					new AdminFrame(utilisateur);
+				} else {
+					System.out.println("vous êtes simple");
+					new UserFrame(utilisateur);
+				}
+				this.dispose();
+			}
+		} else {
 			InscriptionFrame inscriptionFrame = new InscriptionFrame();
 			this.dispose();
-			
 		}
-		
 	}
 
 }
