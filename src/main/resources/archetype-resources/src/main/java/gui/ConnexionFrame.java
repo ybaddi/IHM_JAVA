@@ -18,7 +18,7 @@ public class ConnexionFrame extends JFrame implements ActionListener{
 	
 	private JTextField nomText = new JTextField();
 	private JTextField passwordText = new JTextField();
-	private JButton btnInscription = new JButton("Inscription");
+//	private JButton btnInscription = new JButton("Inscription");
 	public JButton btnConnextion = new JButton("Connection");
 	public int nbrConnexion;
 	
@@ -48,9 +48,9 @@ public class ConnexionFrame extends JFrame implements ActionListener{
 		
 		
 		// btnInscription
-		btnInscription.setBounds(51, 183, 117, 23);
-		getContentPane().add(btnInscription);
-		btnInscription.addActionListener(this);
+//		btnInscription.setBounds(51, 183, 117, 23);
+//		getContentPane().add(btnInscription);
+//		btnInscription.addActionListener(this);
 				
 		// text nom
 		btnConnextion.setBounds(214, 183, 111, 23);

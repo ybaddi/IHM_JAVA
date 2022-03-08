@@ -45,6 +45,26 @@ public class UserDaoImpl implements Dao<User> {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void remove(int userID) {
+		// TODO Auto-generated method stub
+		Connection c = MyConnection.getConnexion();
+		if(c!=null) {
+			try {
+			PreparedStatement st = 
+					c.prepareStatement("delete from users "
+							+ "where id=?",
+							PreparedStatement.RETURN_GENERATED_KEYS);
+			st.setInt(1, userID);
+			st.executeUpdate();
+			
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return;
+		
+	}
 
 	public User update(User user) {
 		// TODO Auto-generated method stub

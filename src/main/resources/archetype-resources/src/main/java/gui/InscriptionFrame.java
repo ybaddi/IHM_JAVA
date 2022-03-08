@@ -97,7 +97,7 @@ public class InscriptionFrame extends JFrame {
 			}else {
 				JOptionPane.showMessageDialog(null, "isertion success");
 				System.out.println(addedUser);
-				UserFrame simpleUtilisateurFrame = new UserFrame(addedUser);
+				AdminFrame simpleUtilisateurFrame = new AdminFrame();
 				this.dispose();
 			}
 		});
